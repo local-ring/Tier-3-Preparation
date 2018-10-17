@@ -82,26 +82,17 @@ Note however some authors take a different approach, for example there is a diff
 \section{Base space}
 
  \subsection{Spectral sequence}
- I need to know what is a cellular homology of a CW complex to understand the naive example of spectral sequence (See \cite{hatcher} Ch. V).\par
- 
- If $X$ is a CW-complex with n-skeleton  $X_{n}$, the cellular-homology modules are defined as the homology groups of the cellular chain complex
+ I need to know what is a cellular homology of a CW complex to understand the naive example of spectral sequence (See \cite{hatcher} Ch. V).\\ 
+ (from Wikipedia) If $X$ is a CW-complex with n-skeleton  $X_{n}$, the cellular-homology modules are defined as the homology groups of the cellular chain complex
 \[\cdots \to {H_{n+1}}(X_{n+1},X_{n})\to {H_{n}}(X_{n},X_{n-1})\to {H_{n-1}}(X_{n-1},X_{n-2})\to \cdots ,\]
 where  $X_{-1}$ is taken to be the empty set.
 
-The group
-
- \[ {H_{n}}(X_{n},X_{n-1})\]
-is free abelian, with generators that can be identified with the  $n$-cells of  $X$. Let  $e_{n}^{\alpha }$ be an $n$-cell of $X$, and let  \[ \chi _{n}^{\alpha }:\partial e_{n}^{\alpha }\cong \mathbb {S} ^{n-1}\to X_{n-1}\] be the attaching map. Then consider the composition
+The group ${H_{n}}(X_{n},X_{n-1})$ is free abelian, with generators that can be identified with the  $n$-cells of  $X$. Let  $e_{n}^{\alpha }$ be an $n$-cell of $X$, and let  \[ \chi _{n}^{\alpha }:\partial e_{n}^{\alpha }\cong \mathbb {S} ^{n-1}\to X_{n-1}\] be the attaching map. Then consider the composition
 
  \[\chi _{n}^{\alpha \beta }:\mathbb {S} ^{n-1}\,{\stackrel {\cong }{\longrightarrow }}\,\partial e_{n}^{\alpha }\,{\stackrel {\chi _{n}^{\alpha }}{\longrightarrow }}\,X_{n-1}\,{\stackrel {q}{\longrightarrow }}\,X_{n-1}/\left(X_{n-1}\setminus e_{n-1}^{\beta }\right)\,{\stackrel {\cong }{\longrightarrow }}\,\mathbb {S} ^{n-1},\]
-
 where the first map identifies $\mathbb {S} ^{n-1}$ with $\partial e_{n}^{\alpha }$ via the characteristic map  $\Phi _{n}^{\alpha }$ of $e_{n}^{\alpha }$, the object $e_{n-1}^{\beta }$ is an  $(n-1)$-cell of $X$, the third map  $q$ is the quotient map that collapses $X_{n-1}\setminus e_{n-1}^{\beta }$ to a point (thus wrapping  $e_{n-1}^{\beta }$ into a sphere  $\mathbb {S} ^{n-1})$, and the last map identifies $X_{n-1}/\left(X_{n-1}\setminus e_{n-1}^{\beta }\right)$ with  $\mathbb {S} ^{n-1}$ via the characteristic map  $\Phi _{n-1}^{\beta }$ of  $e_{n-1}^{\beta }$.
 
-The boundary map
-
- \[d_{n}:{H_{n}}(X_{n},X_{n-1})\to {H_{n-1}}(X_{n-1},X_{n-2})\]
-is then given by the formula
-
+The boundary map $d_{n}:{H_{n}}(X_{n},X_{n-1})\to {H_{n-1}}(X_{n-1},X_{n-2})$ is then given by the formula
  \[{d_{n}}(e_{n}^{\alpha })=\sum _{\beta }\deg \left(\chi _{n}^{\alpha \beta }\right)e_{n-1}^{\beta },\]
 where  $\deg \left(\chi _{n}^{\alpha \beta }\right)$ is the \textit{degree}\footnotemark of  $\chi _{n}^{\alpha \beta }$ and the sum is taken over all $(n-1)$-cells of $X$, considered as generators of ${H_{n-1}}(X_{n-1},X_{n-2})$.
 
@@ -117,5 +108,5 @@ In algebriac topology: Let $X$ and $Y$ be closed connected oriented m-dimensiona
 
 A continuous map $f : X\to Y$ induces a homomorphism $f_*$ from $H_m(X)$ to $H_m(Y)$. Let $[X]$, resp. $[Y]$ be the chosen generator of $H_m(X)$, resp. $H_m(Y)$ (or the fundamental class of $X$, $Y$). Then the degree of $f$ is defined to be $f_*([X])$. In other words,
 \[f_{*}([X])=\deg(f)[Y]\,.\]
-If $y$ in $Y$ and $f^{−1}(y)$ is a finite set, the degree of $f$ can be computed by considering the $m$-th local homology groups of $X$ at each point in $f^{−1}(y)$.}
+If $y$ in $Y$ and $f^{-1}(y)$ is a finite set, the degree of $f$ can be computed by considering the $m$-th local homology groups of $X$ at each point in $f^{−1}(y)$.}
 
