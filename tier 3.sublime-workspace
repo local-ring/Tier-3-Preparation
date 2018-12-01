@@ -1,0 +1,637 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "\\part{Algebraic Topology}\n\\section{Math Stackexchange Digest}\n\\paragraph{1}\\href{https://math.stackexchange.com/questions/42005}{Precise official definition of a cell complex and CW-complex}\n\nThe definition of cell complex from Introduction to Topological Manifolds (John M. Lee)：\n\n   Here are technical details of the definition. If $X$ is a non-empty topological space, a {\\it cell decomposition of} $X$ is a partition $\\mathcal{E}$ of $X$ into subspaces that are open cells of various dimensions, such that the following condition is satisfied:\n   \n   for each cell $e\\in \\mathcal{E}$ of dimension $n\\geq 1$, there exists a continuous map $\\phi$\n   from some closed $n$-cell $\\DD$ into $X$ (called a {\\it characteristic map for $e$}) that restricts to a homeomorphism from $D^{\\circ}$ (interior) onto $e$ and maps $\\partial D$ into the union of all cells of $\\mathcal{E}$ of dimensions strictly less than $n$.\\par\n   A {\\it cell complex} is a Hausdorff\\footnote{The Hausdorff condition is included both to rule out various pathologies (病理学) and because, as we show below, the inductive construction of cell complexes automatically yields Hausdorff spaces.} space $X$ together with a specific cell decomposition of $X$.\\par\n   A {\\it CW complex} is cell complex $(X,\\mathcal{B})$ satisfying the following additional conditions:\\\\\n   (C) The closure of each cell is contained in a union of finitely many cells.\\\\\n   (W) The topology of $X$ is coherent\\footnote{First we need the following definition. Suppose $X$ is a topological space, and $\\mathcal{B}$ is any family of subspaces of $X$ whose union is $X$. To say that the topology of $X$ is {\\it coherent} with $\\mathcal{B}$ means that a subset $U\\subseteq X$ is open in $X$ if and only if its intersection with each $B\\in \\mathcal{B}$ is open in $B$.\\par \n   It is easy to show by taking complements that this is equivalent to the requirement that $U$ is closed in $X$ if and only if $U\\cap B$ is closed in $B$ for each $B \\in\\mathcal{B}$. (In either case, the ``only if'' implication always hold by definition of the subspace topology on $B$, so it is the ``if'' part that is significant. For example, if $(X_{\\alpha})$ is an indexed family of topological spaces, the disjoint union topology on $\\coprod X_{\\alpha}$ is coherent with the family $(X_{\\alpha})$, thought of as subspaces of the disjoint union.} with the family of closed subspaces $\\{\\bar{e}:\\ e\\in \\mathcal{B}\\}$ \\par\n\\vspace{3pt}\n\\hrule\n\\vspace{3pt}\nLet $\\mathbb{B}^n$ denote a closed n-ball. As far as I know, a {\\it cell complex} is a space, obtained as \\[X=\\bigcup_{i\\in\\mathbb{N}_0} X^{(i)},\\] \nsuch that\n1. $X^{(0)}$ is a discrete space and\n\n2. $X^{(n)}$ is obtained from $X^{(n-1)}$ by attaching $n$-cells, i.e.\n\\[X^{(n)}= X^{(n-1)}\\bigcup_{f_{\\lambda}}\\mathbb{B}^n= X^{(n-1)}\\coprod \\mathbb{B}^n/\\sim\\]\nwhere $x\\sim f_\\lambda(x)$.\n\n3. $A\\subseteq X$ is closed in $X$ if and only if $A\\cap X^{(n)}$ is closed in $X^{(n)}$ for any $n$.\n\nBut shouldn't there be some condition on $f_\\lambda$? For example, if we have a graph ($1$-dimensional complex) consisting of a single vertex and a single edge. Then when we are attaching $\\mathbb{B}^2$, we can set $f$ to map the whole $S^1$ to a single point on the edge, that isn't the vertex. Thus we get a very weird space:\n\\begin{figure}[h!]\n\\centering\n\\includegraphics[width=6cm]{hulu.png}\n\\end{figure}\n\nShouldn't $f$ go along each loop/edge in $X^{(1)}$ integer many times and not stop in the middle? Also, how do we prevent $f$ from oscillating infninitely? For example, if $X^{(1)}$ contains two edges $a,b\\subseteq\\{0\\}\\times\\mathbb{R}\\subseteq\\mathbb{R}^2$ with $a\\cap b=\\{(0,0)\\}$, then $f(x)=(0,x^2\\sin(1/x))$ can go infinitely many times into $a$ and $b$.\\hfill || \\par\n\n\n\nNo part of the definition of a CW complex prevents the sorts of examples that you have indicated.  In particular:\n\n1. It is perfectly fine for the entire boundary of a 2-cell to be attached to a single point in the middle of a 1-cell.\n\n2. It is perfectly fine for the boundary of a 2-cell to be attached to a 1-cell in an oscillating fashion, e.g. locally resembling $x \\sin(1/x)$.\\par\n\nI think you have a good understanding of the definition of a CW complex, you are just confused about how a definition this general could be useful.\\par\n\nThe reason is that algebraic topology is mostly defined up to homotopy equivalence. This is usually defined as follows: two spaces $X$ and $Y$ are homotopy equivalent if there exist maps $f\\colon X\\to Y$ and $g\\colon Y \\to X$ so that $f\\circ g$ and $g\\circ f$ are homotopic to the identity map.  Homotopy equivalent spaces have the same homotopy groups, the same homology and cohomology groups, and essentially all the same homotopical properties.\\par\n\nThe reason that wildness of the attaching maps $f_\\lambda$ is unimportant is that any \"wild\" CW complex is homotopy equivalent to a \"tame\" CW complex.  In particular, the homotopy type of a CW complex is entirely determined by the homotopy classes of the attaching maps. That is, if you replace one of the attaching maps by a homotopic map, then the resulting CW complex is homotopy equivalent.\\par\n\nFor example, if the entire boundary of a 2-cell is attached to the middle of a 1-cell, this is homotopic to a map that attaches the entire boundary to a nearby 0-cell, so the two resulting complexes are homotopy equivalent.  Similarly, any oscillating map like $x\\sin(1/x)$ is homotopic to a more reasonable map, so any CW complex with an oscillating attachment is homotopy equivalent to one with nicer attaching maps.\\par\n\nIndeed, assuming we are willing to work up to homotopy equivalence, we can assume that the boundary of any 2-cell maps to either\n\n1. A single 0-cell via a constant map, or\n\n2. To a closed loop of edges in the 1-skeleton, using a map which is locally an embedding.\\par\n\nThis is how topologists tend to think of cell complexes for the purposes of algebraic topology.\\par\n\nIncidentally, the reason that it is useful to allow arbitrary attaching maps is that it glosses over (掩盖，避免考虑) the problem of how to choose a \"nice\" representative for each homotopy class of maps from the boundary of an $n$-cell to the $(n-1)$-skeleton.  Though it's obvious how such \"nice\" representatives should work when $n=2$, it becomes less clear in higher dimensions.\\par\n\nFor example, it is possible to have a CW complex whose $2$-skeleton is a 2-sphere, and then attach a $4$-cell to the $2$-skeleton using a non-trivial element of $\\pi_3(S^2)$.  That is, the boundary of the $4$-cell is a $3$-sphere $S^3$, which is being attached to the sphere $S^2$ via the [Hopf map][2] $S^3 \\to S^2$.  This is actually a very useful cell complex, because it gives a cell structure for the projective space $\\mathbb{C}P^2$ with only three cells.\\par\n\nSimplicial complexes are much simpler: they are truly just combinatorial objects, with simplexes glued together using the simple linear identifications.  The disadvantage is that a simplicial complex must usually have many more simplices than the cells of a cell complex.  For example, there exists a CW complex for the torus that has only four cells, while a simplical complex homeomorphic to a torus requires at least a couple dozen simplices.  In general, putting a CW structure on a space requires only homotopy information, while putting a simplicial structure on the space requires a much more careful consideration of the geometry.\\par\n\nBy the way, the best place to learn about cell complexes and their relation to homotopy equivalence is Chapter 0 of \\cite{hatcher}.",
+			"file": "at.tex",
+			"file_size": 7646,
+			"file_write_time": 131834459240516170,
+			"settings":
+			{
+				"buffer_size": 7559,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "tier 3.sublime-project",
+			"settings":
+			{
+				"buffer_size": 89,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "main.tex",
+			"settings":
+			{
+				"buffer_size": 523,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "references.bib",
+			"settings":
+			{
+				"buffer_size": 164,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "package.tex",
+			"settings":
+			{
+				"buffer_size": 949,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "style.tex",
+			"settings":
+			{
+				"buffer_size": 1503,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					""
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Traditional"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"PdfLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"XeLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"LuaLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - PdfLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - XeLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - LuaLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Script Builder"
+				]
+			],
+			[
+				"Packages/LaTeXTools/LaTeX.sublime-build",
+				"Traditional"
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 784.0,
+		"last_filter": "pcip",
+		"selected_items":
+		[
+			[
+				"pcip",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"mp",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"markdown pre",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"mar",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"package i",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: l",
+				"Package Control: Enable Package"
+			],
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 896.0
+	},
+	"console":
+	{
+		"height": 246.0,
+		"history":
+		[
+			"texify -b -p --engine=xeletax",
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/local_/Desktop/Tier-3-Preparation"
+	],
+	"file_history":
+	[
+		"/C/Users/local_/Desktop/Tier-3-Preparation/tier 3.sublime-project",
+		"/C/Users/local_/Desktop/RND/Contents/glossary.tex",
+		"/C/Users/local_/Desktop/RND/book.tex",
+		"/C/Users/local_/Desktop/RND/Contents/introduction.tex",
+		"/C/Users/local_/Desktop/RND/Contents/ch1.tex",
+		"/C/Users/local_/AppData/Roaming/Sublime Text 3/Packages/LaTeXTools/LaTeXTools.sublime-settings",
+		"/C/Users/local_/Desktop/Tier-3-Preparation/Contents/ch1.tex",
+		"/C/Users/local_/Desktop/RND/rnd.sublime-project",
+		"/C/Users/local_/Desktop/RND/Contents/introduction.log",
+		"/C/Users/local_/Desktop/Books & Notes/Documents/Derived Rep Schemes 2/v1.tex",
+		"/C/Users/local_/RND/book.tex",
+		"/C/Users/local_/RND/.git/config",
+		"/C/Program Files/Git/mingw64/share/doc/git-doc/git-commit.html",
+		"/C/Users/local_/AppData/Roaming/Sublime Text 3/Packages/LaTeXTools/LaTeX.sublime-build",
+		"/C/Users/local_/AppData/Roaming/Sublime Text 3/Packages/User/LaTeXTools.sublime-settings",
+		"/C/Users/local_/Desktop/(10 条消息)local ring - 知乎.html",
+		"/C/Users/local_/Downloads/CV.tex",
+		"/C/Users/local_/AppData/Local/Temp/Temp1_mini-hilbert-quot.zip/My_Library.bib",
+		"/C/Users/local_/AppData/Local/Temp/Temp1_mini-hilbert-quot.zip/main.tex",
+		"/C/Users/local_/AppData/Local/Temp/Temp1_mini-hilbert-quot.zip/day6.tex",
+		"/C/Users/local_/AppData/Local/Temp/Temp1_mini-hilbert-quot.zip/day5.tex",
+		"/C/Users/local_/AppData/Local/Temp/Temp1_mini-hilbert-quot.zip/day4.tex",
+		"/C/Users/local_/AppData/Local/Temp/Temp1_mini-hilbert-quot.zip/day3.tex",
+		"/C/Users/local_/AppData/Local/Temp/Temp1_mini-hilbert-quot.zip/day2.tex",
+		"/C/Users/local_/AppData/Local/Temp/Temp1_mini-hilbert-quot.zip/day1.tex",
+		"/C/Users/local_/AppData/Local/Packages/903DB504.QQ_a99ra4d2cbcxa/LocalState/User/2373361618/NetworkFile/root.tex",
+		"/C/Users/local_/Desktop/Thesis/thesis.tex",
+		"/C/Users/local_/Downloads/Blog/source/_posts/notes.md",
+		"/C/Users/local_/Downloads/Blog/source/_posts/kongqd.md",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/C/Users/local_/Downloads/Blog/source/_posts/waytomath.md",
+		"/C/Users/local_/Desktop/IUB/Tier 1/Week 7/tier007.tex",
+		"/C/Users/local_/Desktop/IUB/Tier 1/Week 6/tier006.tex",
+		"/C/Users/local_/Downloads/Blog/source/_posts/swimming.md",
+		"/C/Users/local_/Desktop/Yau Center/Yuguang Zhang/notes/892.tex",
+		"/C/Users/local_/Desktop/Microsoft_Edge_‎07_‎31_‎2017.html",
+		"/C/Users/local_/Desktop/IUB/Tier 1/Week 5/tier005.tex",
+		"/C/Users/local_/Desktop/IUB/Tier 1/Week 4/tier004.tex",
+		"/C/Users/local_/Downloads/Blog/source/_posts/mwriting.md",
+		"/C/Users/local_/Downloads/Blog/source/_posts/fitness.md",
+		"/C/Users/local_/Downloads/Blog/source/_posts/waytomath.mdown",
+		"/C/Users/local_/Desktop/Yau Center/Yuguang Zhang/notes/notes.tex",
+		"/C/Users/local_/Desktop/IUB/Tier 1/Week 3/tier003.tex",
+		"/C/Users/local_/Desktop/Yau Center/Yin Tian/problem/Problem.tex",
+		"/C/Users/local_/Desktop/22/comments/Model-short.tex",
+		"/C/Users/local_/Downloads/windows/hosts",
+		"/C/Users/local_/Downloads/windows/SUNS_BLOG.html",
+		"/C/Users/local_/Downloads/windows/永久免费科学上网，点击进入！.html",
+		"/C/Users/local_/Downloads/Blog/source/_posts/四大主流运营商.md",
+		"/C/Users/local_/Desktop/Thesis/notes.tex",
+		"/C/Users/local_/Desktop/IUB/Tier 1/Week 4/Week 4.tex",
+		"/C/Users/local_/Downloads/Blog/source/_drafts/spin-geo.md",
+		"/C/Users/local_/Downloads/Blog/themes/next/_config.yml",
+		"/C/Users/local_/Downloads/Blog/_config.yml",
+		"/C/Users/local_/Desktop/IUB/Tier 1/Week 3/Week 3.tex",
+		"/C/Users/local_/Desktop/22/problem/Problem.tex",
+		"/C/Users/local_/Desktop/Yau Center/Weiping Zhang/notes/notes.tex",
+		"/C/Users/local_/Desktop/Yau Center/Bohan Fang/notes/notes.tex",
+		"/C/Users/local_/Downloads/Blog/source/about/index.md",
+		"/C/Users/local_/Downloads/Blog/source/_posts/seminar.md",
+		"/C/Users/local_/Desktop/The Book/book.tex",
+		"/C/Users/local_/Downloads/Blog/source/categories/index.md",
+		"/C/Users/local_/Downloads/Blog/source/_posts/visa.md",
+		"/C/Users/local_/Downloads/Blog/source/404.html",
+		"/C/Users/local_/Downloads/Blog/source/_drafts/letters.md",
+		"/C/Users/local_/Downloads/Blog/source/_drafts/mwriting.md",
+		"/C/Users/local_/Downloads/Blog/source/_posts/mwriting.mdown",
+		"/C/Users/local_/Desktop/22/魏来/wei.tex",
+		"/C/Users/local_/Desktop/22/Ag/Model-beamer.tex",
+		"/C/Users/local_/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/local_/AppData/Local/Temp/44.html",
+		"/C/Users/local_/AppData/Local/Temp/15.html",
+		"/C/Users/local_/AppData/Roaming/Sublime Text 3/Packages/User/MarkdownPreview.sublime-settings",
+		"/C/Users/local_/AppData/Roaming/Sublime Text 3/Packages/Markdown Preview/MarkdownPreview.sublime-settings",
+		"/C/Users/local_/Downloads/Blog/source/_posts/fitness.html",
+		"/C/Users/local_/AppData/Roaming/Sublime Text 3/Packages/MarkdownEditing/Markdown (Standard).sublime-settings",
+		"/C/Users/local_/AppData/Roaming/Sublime Text 3/Packages/User/MarkdownLivePreview.css",
+		"/C/Users/local_/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/C/Users/local_/Downloads/Blog/source/_posts/seminar2.md",
+		"/C/Users/local_/Downloads/Blog/source/_drafts/hello-world.md",
+		"/C/Users/local_/Desktop/Yau Center/Daniele Valeri/notes/notes.tex",
+		"/C/Users/local_/Desktop/Yau Center/Yin Tian/Chap 1-3/combinatorics-of-mutations.tex",
+		"/C/Users/local_/Desktop/Yau Center/Yin Tian/Chap 1-3/Chapters1-3.tex",
+		"/C/Users/local_/Desktop/Yau Center/Yin Tian/Chap 1-3/geometric-type.tex",
+		"/C/Users/local_/Desktop/Li/problem/Model-short-ii.tex",
+		"/C/Users/local_/Desktop/Li/problem/Problem.tex",
+		"/C/Users/local_/Desktop/Yau Center/Yin Tian/notes/notes.tex",
+		"/C/Users/local_/Desktop/Yau Center/Xiaoguang Ma/notes/notes.tex",
+		"/C/Users/local_/Desktop/Yau Center/Chenyang Xu/notes.tex",
+		"/C/Users/local_/Desktop/Yau Center/Yin Tian/Chap 1-3/epsf.tex",
+		"/C/Users/local_/Desktop/Yau Center/Yin Tian/Chap 1-3/tp-examples.tex",
+		"/C/Users/local_/Desktop/Li/problem/Model-short.tex",
+		"/C/Users/local_/Desktop/The Book/Model/Model-beamer.tex",
+		"/C/Users/local_/Desktop/Li/魏来/wei.tex",
+		"/C/Users/local_/Desktop/魏来/wei.tex",
+		"/C/Users/local_/Desktop/The Book/Model/Model-short.tex",
+		"/D/下载/Warriors.Of.The.Rainbow.Seediq.Bale.2011.BluRay.1080p.DTS.x264-CHD/第三楼字幕网-[赛德克·巴莱] (上下)合集/[赛德克·巴莱]Warriors.Of.The.Rainbow.Seediq.Bale.Part.1.2011.chs.srt",
+		"/C/Users/local_/Desktop/Yau Center/Yin Tian/1608.05735.tex",
+		"/C/Users/local_/Desktop/Li/comments/Model-short.tex",
+		"/C/Users/local_/Desktop/Yau Center/Si Li/notes/notes.tex",
+		"/C/Users/local_/Desktop/Li/Model-short.tex",
+		"/D/Documents/Derived Rep Schemes 2/lectures.tex",
+		"/C/Users/local_/Desktop/0612139.tex",
+		"/C/Users/local_/Desktop/Mckay/d/E.tex",
+		"/C/Users/local_/Desktop/The Book/0804.4748.tex",
+		"/C/Users/local_/Desktop/Yau Center/Yuguang Zhang/notes/Model.tex",
+		"/D/Model.tex",
+		"/C/Users/local_/Desktop/1.31/v1.tex",
+		"/C/Users/local_/Desktop/1.31/lectures.tex",
+		"/E/notes.tex",
+		"/C/Users/local_/Downloads/12055874.tex",
+		"/D/Documents/Mathematical Notess/Lecture/Hochschild 2015/12/Hochschild 12.tex",
+		"/C/Users/local_/Desktop/1.31/lectures.toc",
+		"/D/Documents/Derived Rep Schemes 2/v1.tex",
+		"/C/Users/local_/Desktop/1.31/[no file]",
+		"/D/Hexo/themes/next/_config.yml",
+		"/D/Hexo/source/_posts/seminar2.md",
+		"/D/Documents/Derived Rep Schemes 2/lectures.toc",
+		"/D/Hexo/_config.yml",
+		"/C/Users/local_/Desktop/_drafts/letters.md",
+		"/C/Users/local_/Desktop/_drafts/sad-notes.md",
+		"/C/Users/local_/Desktop/_drafts/moon-sixpence.md",
+		"/C/Users/local_/Desktop/_drafts/hello-world.md",
+		"/C/Users/local_/Desktop/_config.yml",
+		"/D/Hexo/source/_posts/seminar3.md",
+		"/D/Hexo/themes/next/README.md",
+		"/D/Hexo/source/_posts/translation.md",
+		"/D/Hexo/source/_posts/as-if.md"
+	],
+	"find":
+	{
+		"height": 69.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"\\hp",
+			"\\A",
+			"\\Ho",
+			"H_0",
+			"language",
+			"Hom",
+			"update"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\\Ho",
+			"\\Hom",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "at.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7559,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								190,
+								190
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "tier 3.sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 89,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								51,
+								51
+							]
+						],
+						"settings":
+						{
+							"markdonw_live_preview_last_run": 1538971935.7,
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "main.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 523,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								142,
+								142
+							]
+						],
+						"settings":
+						{
+							"markdonw_live_preview_last_run": 1538971418.63,
+							"syntax": "Packages/LaTeX/LaTeX.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "references.bib",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 164,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"markdonw_live_preview_last_run": 1538971425.96,
+							"syntax": "Packages/LaTeXTools/BibLaTeX.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "package.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 949,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"markdonw_live_preview_last_run": 1538971428.68,
+							"syntax": "Packages/LaTeX/LaTeX.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "style.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1503,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"markdonw_live_preview_last_run": 1538971431.58,
+							"syntax": "Packages/LaTeX/LaTeX.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 69.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.latextools":
+	{
+		"height": 253.0
+	},
+	"output.markdown":
+	{
+		"height": 336.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 198.0
+	},
+	"pinned_build_system": "Packages/LaTeXTools/LaTeX.sublime-build",
+	"project": "tier 3.sublime-project",
+	"replace":
+	{
+		"height": 120.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"package",
+				"C:\\Users\\local_\\AppData\\Roaming\\Sublime Text 3\\Packages\\LaTeXTools\\LaTeXTools.sublime-settings"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 1000.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 760.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 300.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

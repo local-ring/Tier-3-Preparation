@@ -1,0 +1,10 @@
+PWD C:/Users/local_/Desktop/Tier-3-Preparation
+INPUT c:/texlive/2018/texmf.cnf
+INPUT c:/texlive/2018/texmf-dist/web2c/texmf.cnf
+INPUT c:/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT at.tex
+OUTPUT at.log
+OUTPUT at.pdf
+INPUT c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT c:/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map
+INPUT c:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
